@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: dynamicDSSample
+      
+dynamicds:
+  orgCodeHeader: orgCode                            #orgCode HTTP header name
+  general:                                          #通用默认配置，目前仅支持两项，具体机构数据源可覆盖通用配置 
+    maxPoolSize: 10                                 #数据源连接池最大连接数
+    minIdle: 3                                      #数据源连接池最小idle数 
+    defaultTenant : jg3                             #默认数据源，可设置为一个空的database，仅供Spring cloud检查数据源的可连接性 
+  tenants:                                          #具体机构的数据源配置
+    jg3:
+      url: jdbc:mysql://192.168.2.143:3306/jg3
+      userName: root
+      password: password
+    jg4:
+      url: jdbc:mysql://192.168.2.143:3306/jg4
+      userName: root
+      password: password
+    jg5:
+      url: jdbc:mysql://192.168.2.143:3306/jg5
+      userName: root
+      password: password
+      maxPoolSize: 20                               #覆盖默认配置 
+      minIdle: 6                                    #覆盖默认配置
+    jg6:
+      url: jdbc:mysql://192.168.2.135:3306/jg6
+      userName: root
+      password: password   
